@@ -1,0 +1,130 @@
+
+<div class="app-content content ">
+    <!-- <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div> -->
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- users edit start -->
+            <section class="app-user-edit">
+                <div class="card">
+                    <div class="card-body">
+                   
+                    <form novalidate="novalidate" [formGroup]="authForm" (ngSubmit)="createUser()">
+                       
+                        <div class="modal-header mb-1">
+                            <h5 class="modal-title" id="exampleModalLabel">New User</h5>
+                        </div>
+                        <div class="modal-body flex-grow-1">
+                            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.first_name.errors }">
+                                <label class="form-label" for="basic-icon-default-fullname">Full Name</label>
+                                <span *ngIf="isSubmitted && formControls.first_name.errors" class="help-block">
+                                    <span *ngIf="formControls.first_name.errors.required"> First Name is required</span>
+                                    </span>
+                                <input type="text" class="form-control dt-full-name" id="basic-icon-default-fullname" placeholder="John Doe" formControlName="first_name" name="first_name" aria-label="John Doe" aria-describedby="basic-icon-default-fullname2">
+                            </div>
+                            
+                            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+                                <label class="form-label" for="basic-icon-default-email">Email</label>
+                                <span *ngIf="isSubmitted && formControls.email.errors" class="help-block">
+                                    <span *ngIf="formControls.email.errors.required"> Email is required</span>
+                                    </span>
+                                <input type="text" id="basic-icon-default-email" class="form-control dt-email" placeholder="john.doe@example.com" aria-label="john.doe@example.com" aria-describedby="basic-icon-default-email2" formControlName="email" name="email">
+                                <small class="form-text text-muted"> You can use letters, numbers &amp; periods </small>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.phone.errors }">
+                                <label class="form-label" for="basic-icon-default-uname">Phone</label>
+                                <span *ngIf="isSubmitted && formControls.phone.errors" class="help-block">
+                                    <span *ngIf="formControls.phone.errors.required"> Phone is required</span>
+                                    </span>
+                                <input type="text" id="basic-icon-default-uname" class="form-control dt-uname" placeholder="(888) 888 8888" aria-label="jdoe1" aria-describedby="basic-icon-default-uname2" formControlName="phone" name="phone" >
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+                                <label class="form-label" for="basic-icon-default-uname">Password</label>
+                                <span *ngIf="isSubmitted && formControls.password.errors" class="help-block">
+                                    <span *ngIf="formControls.password.errors.required"> Password is required</span>
+                                    </span>
+                                <input type="text" id="basic-icon-default-uname" class="form-control dt-uname" placeholder="Enter Password" aria-label="jdoe1" aria-describedby="basic-icon-default-uname2" formControlName="password" name="password" >
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.gender.errors }">
+                                <label class="form-label" for="basic-icon-default-uname">Gender</label>
+                                <span *ngIf="isSubmitted && formControls.gender.errors" class="help-block">
+                                    <span *ngIf="formControls.gender.errors.required"> Gender is required</span>
+                                    </span>
+                                    <select id="user-role" class="form-control" formControlName="gender" name="gender">
+                                        <option value="">Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                               
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.caller_id.errors }">
+                                <label class="form-label" for="basic-icon-default-uname">Caller Id</label>
+                                <span *ngIf="isSubmitted && formControls.caller_id.errors" class="help-block">
+                                    <span *ngIf="formControls.caller_id.errors.required"> Caller Id is required</span>
+                                    </span>
+                                    
+                                    <input type="text" id="basic-icon-default-uname" class="form-control dt-uname" placeholder="Enter Caller id" aria-label="jdoe1" aria-describedby="basic-icon-default-uname2" formControlName="caller_id" name="caller_id" >
+                               
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.incoming_call_no.errors }">
+                                <label class="form-label" for="basic-icon-default-uname">Incoming call no</label>
+                                <span *ngIf="isSubmitted && formControls.incoming_call_no.errors" class="help-block">
+                                    <span *ngIf="formControls.incoming_call_no.errors.required"> incoming call no is required</span>
+                                    </span>
+                                    
+                                    <input type="text" id="basic-icon-default-uname" class="form-control dt-uname" placeholder="Enter incoming call no" aria-label="jdoe1" aria-describedby="basic-icon-default-uname2" formControlName="incoming_call_no" name="incoming_call_no" >
+                               
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.role.errors }">
+                                <label class="form-label" for="user-role">User Role</label>
+                                <span *ngIf="isSubmitted && formControls.role.errors" class="help-block">
+                                    <span *ngIf="formControls.role.errors.required"> Role is required</span>
+                                    </span>
+                                <select id="user-role" class="form-control" formControlName="role" name="role">
+                                    <option value="">Select Role</option>
+                                    <option value="4">Agent</option>
+                                    <option value="3">Leam Leader</option>
+                                    <option value="2">Operation Manager</option>
+                                </select>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.project_id.errors }">
+                                <label class="form-label" for="user-role">Project Name</label>
+                                <span *ngIf="isSubmitted && formControls.project_id.errors" class="help-block">
+                                    <span *ngIf="formControls.project_id.errors.required"> Role is required</span>
+                                    </span>
+                                <select id="user-role" class="form-control" formControlName="project_id" name="project_id">
+                                    <option value="">Select Project</option>
+                                    <option  *ngFor="let item of contact_list.result" value="{{item.project_id}}">{{item.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.recording.errors }">
+                                <label class="form-label" for="user-role">Recording</label>
+                                <span *ngIf="isSubmitted && formControls.recording.errors" class="help-block">
+                                    <span *ngIf="formControls.recording.errors.required"> Recording is required</span>
+                                    </span>
+                                    <label class="radio-inline" style="margin-left: 10px;">
+                                        <input type="radio" name="recording" formControlName="recording" value="Yes" checked>  Yes
+                                      </label>
+                                      <label class="radio-inline" style="margin-left: 10px;">
+                                        <input type="radio" name="recording"  formControlName="recording" value="No">  No
+                                      </label>
+                            </div>
+                           
+                            <button type="submit" class="btn btn-primary mr-1 data-submit waves-effect waves-float waves-light">Submit</button>
+                            <button type="reset" class="btn btn-outline-secondary waves-effect" >Cancel</button>
+                        </div>
+                    </form>
+                           
+
+                    </div>
+                </div>
+            </section>
+            <!-- users edit ends -->
+            <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+                <p style="color: white">Please Wait. </p>  
+                </ngx-spinner>   
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+
+<div class="app-content content ">
+    <!-- <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div> -->
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- users edit start -->
+            <section class="app-user-edit">
+                <div class="card">
+                    <div class="card-body">
+                   
+                    <form novalidate="novalidate" [formGroup]="authForm" (ngSubmit)="createUser()">
+                       
+                        <div class="modal-header mb-1">
+                            <h5 class="modal-title" id="exampleModalLabel">New Break Type</h5>
+                        </div>
+                        <div class="modal-body flex-grow-1">
+                            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.break.errors }">
+                                <label class="form-label" for="basic-icon-default-fullname">Break Type </label>
+                                <span *ngIf="isSubmitted && formControls.break.errors" class="help-block">
+                                    <span *ngIf="formControls.break.errors.required"> Break Type  is required</span>
+                                    </span>
+                                <input type="text" class="form-control dt-full-name" id="basic-icon-default-fullname" placeholder="Break Type " formControlName="break" name="break" aria-label="Break Type " aria-describedby="basic-icon-default-fullname2">
+                            </div>
+                             <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.time.errors }">
+                                <label class="form-label" for="basic-icon-default-fullname">Break Time</label>
+                                <span *ngIf="isSubmitted && formControls.time.errors" class="help-block">
+                                    <span *ngIf="formControls.time.errors.required"> Break Time is required</span>
+                                    </span>
+                                <input type="text" class="form-control dt-full-name" id="basic-icon-default-fullname" placeholder="Break Time " formControlName="time" name="time" aria-label="Break Time " aria-describedby="basic-icon-default-fullname2">
+                            </div>
+                           
+                           
+                            <button type="submit" class="btn btn-primary mr-1 data-submit waves-effect waves-float waves-light">Submit</button>
+                            <button type="reset" class="btn btn-outline-secondary waves-effect" >Cancel</button>
+                        </div>
+                    </form>
+                           
+
+                    </div>
+                </div>
+            </section>
+            <!-- users edit ends -->
+
+        </div>
+    </div>
+</div>

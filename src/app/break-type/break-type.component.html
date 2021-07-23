@@ -1,0 +1,145 @@
+<p>break-type works!</p>
+
+
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <!-- <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div> -->
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- users list start -->
+            <section class="app-user-list">
+                <!-- users filter start -->
+                
+                <!-- users filter end -->
+                <!-- list section start -->
+                <div class="card">
+                    <div class="row" id="basic-table">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title" style="width:100%;">Break Type List 
+                                        <a [routerLink]="['/add-break-type']">
+                                        <button style="float: right" class="btn add-new btn-primary mt-50" tabindex="0" aria-controls="DataTables_Table_0" type="button" ><span>Add New Break Type</span></button>
+                                        </a>
+                                    </h4>
+                                        
+                                </div>
+                                <div class="table-responsive" style="margin-left: 10px;margin-right: 10px;">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Time Duration </th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of break_list.result | paginate: config">
+                                                <td>
+                                                    <span class="font-weight-bold">{{item.break}}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="font-weight-bold">{{item.time_duration}}</span>
+                                                </td>
+                                               
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn btn-sm dropdown-toggle hide-arrow waves-effect waves-float waves-light" data-toggle="dropdown">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" [routerLink]="['/user-view']">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 mr-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                                                                <span>View</span>
+                                                            </a>
+                                                            <a class="dropdown-item" href="javascript:void(0);">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash mr-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                                                                <span>Delete</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                              
+                                              </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal to add new user starts-->
+                    <div class="modal modal-slide-in new-user-modal fade" id="modals-slide-in">
+                        <div class="modal-dialog">
+                            <form class="add-new-user modal-content pt-0" novalidate="novalidate" [formGroup]="authForm" (ngSubmit)="createUser()">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+                                <div class="modal-header mb-1">
+                                    <h5 class="modal-title" id="exampleModalLabel">New User</h5>
+                                </div>
+                                <div class="modal-body flex-grow-1">
+                                    <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.first_name.errors }">
+                                        <label class="form-label" for="basic-icon-default-fullname">Full Name</label>
+                                        <span *ngIf="isSubmitted && formControls.first_name.errors" class="help-block">
+                                            <span *ngIf="formControls.first_name.errors.required"> First Name is required</span>
+                                            </span>
+                                        <input type="text" class="form-control dt-full-name" id="basic-icon-default-fullname" placeholder="John Doe" formControlName="first_name" name="first_name" aria-label="John Doe" aria-describedby="basic-icon-default-fullname2">
+                                    </div>
+                                    
+                                    <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+                                        <label class="form-label" for="basic-icon-default-email">Email</label>
+                                        <span *ngIf="isSubmitted && formControls.email.errors" class="help-block">
+                                            <span *ngIf="formControls.email.errors.required"> Email is required</span>
+                                          </span>
+                                        <input type="text" id="basic-icon-default-email" class="form-control dt-email" placeholder="john.doe@example.com" aria-label="john.doe@example.com" aria-describedby="basic-icon-default-email2" formControlName="email" name="email">
+                                        <small class="form-text text-muted"> You can use letters, numbers &amp; periods </small>
+                                    </div>
+                                    <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.phone.errors }">
+                                        <label class="form-label" for="basic-icon-default-uname">Phone</label>
+                                        <span *ngIf="isSubmitted && formControls.phone.errors" class="help-block">
+                                            <span *ngIf="formControls.phone.errors.required"> Phone is required</span>
+                                          </span>
+                                        <input type="text" id="basic-icon-default-uname" class="form-control dt-uname" placeholder="(888) 888 8888" aria-label="jdoe1" aria-describedby="basic-icon-default-uname2" formControlName="phone" name="phone" >
+                                    </div>
+                                    <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.extension.errors }">
+                                        <label class="form-label" for="basic-icon-default-uname">Extension</label>
+                                        <span *ngIf="isSubmitted && formControls.extension.errors" class="help-block">
+                                            <span *ngIf="formControls.extension.errors.required"> Extension is required</span>
+                                          </span>
+                                        <input type="text" id="basic-icon-default-uname" class="form-control dt-uname" placeholder="Extension" aria-label="jdoe1" aria-describedby="basic-icon-default-uname2" formControlName="extension" name="extension">
+                                    </div>
+                                    <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.role.errors }">
+                                        <label class="form-label" for="user-role">User Role</label>
+                                        <span *ngIf="isSubmitted && formControls.role.errors" class="help-block">
+                                            <span *ngIf="formControls.role.errors.required"> Role is required</span>
+                                          </span>
+                                        <select id="user-role" class="form-control" formControlName="role" name="role">
+                                            <option value="4">Agent</option>
+                                            <option value="3">Leam Leader</option>
+                                            <option value="2">Operation Manager</option>
+                                        </select>
+                                    </div>
+                                  
+                                    <button type="submit" class="btn btn-primary mr-1 data-submit waves-effect waves-float waves-light">Submit</button>
+                                    <button type="reset" class="btn btn-outline-secondary waves-effect" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Modal to add new user Ends-->
+                </div>
+                <!-- list section end -->
+            </section>
+            <!-- users list ends -->
+            <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+                <p style="color: white">Please Wait. </p>  
+                </ngx-spinner>   
+        </div>
+    </div>
+</div>
+<!-- END: Content-->
+
+ 
+

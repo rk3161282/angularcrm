@@ -1,0 +1,111 @@
+
+
+    <!-- BEGIN: Header-->
+    <nav class="" style="background: #fff;">
+        <div class="navbar-container d-flex">
+            <div class="bookmark-wrapper d-flex align-items-center">
+                <img src="assets/assets/img/rnd_logo.png" class="img-fluid" style="height: 25px;    margin: 20%;margin-left: 40%;" />
+                
+                
+            </div>
+            
+        </div>
+    </nav>
+   
+
+        
+<div class="app-content content1 ">
+    <!-- <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div> -->
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- users edit start -->
+            <section class="app-user-edit">
+                <div class="card">
+                    <div class="card-body">
+                   
+                    <form novalidate="novalidate" [formGroup]="authForm" >
+                       <div class="col-md-6">
+                        <div class="modal-body flex-grow-1">
+                            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.mobilenumber.errors }">
+                                <!-- <label class="form-label" for="basic-icon-default-fullname">Mobile Number </label> -->
+                                <span *ngIf="isSubmitted && formControls.mobilenumber.errors" class="help-block">
+                                    <span *ngIf="formControls.mobilenumber.errors.required"> Mobile Number  is required</span>
+                                    </span>
+                                <input type="text" class="form-control dt-full-name" id="basic-icon-default-fullname" placeholder="Mobile Number " formControlName="mobilenumber" name="mobilenumber" aria-label="Mobile Number " aria-describedby="basic-icon-default-fullname2">
+                            </div>
+                            
+                           
+                          
+                           
+                        </div>
+                       </div>
+                       <div class="col-md-6">
+                        <button type="button" (click)="addvideocall()" class="btn btn-primary mr-1 data-submit waves-effect waves-float waves-light">Call</button>
+                        </div>
+                        
+                    </form>
+                   
+                    
+                  
+                           
+
+                    </div>
+                </div>
+            </section>
+          
+            <!-- users edit ends -->
+
+        </div>
+    </div>
+</div>
+<div class="col-md-7" *ngIf="showvideoscreen">
+    <div class="accordion" id="accordionExample">
+       <div class="card">
+          <div class="card-header customDoctorLive" style="padding: 0px;">
+             <h2 class="mb-0">
+                {{remoteCalls}}
+                <button class="btn btn-link" type="button" style="width:100%;color: #fff;">
+                   <p style="margin-bottom: 0px;   text-align: left;"><span>Call With raju</span> <span class="error" style="text-align: right;float: right;">. <span style="color: #fff;">Live</span></span> </p>
+                </button>
+             </h2>
+          </div>
+          <div class="collapse show" >
+             <div class="card-body customDoctorImage">
+                <div class="row">
+                   <div class="containertext">
+                      <div class="box" style="background:#837c7c;">
+                         <div *ngFor="let callId of remoteCalls" [id]="callId" class="remote">
+                      </div>
+                   </div>
+                   <div class="box stack-top" style="background: blue;">
+                      <div [id]="localCallId" class="local"></div>
+                   </div>
+                   <div class="box stack-top1">
+                      <div class="row">
+                         <div class="col-md-4" style="text-align: center;">
+                            <div (click)="muteAudio()" *ngIf="!audioimage" style="font-size: 40px; color:#fff; cursor: pointer;">mic</div>
+                            <div *ngIf="audioimage" style="font-size: 40px; cursor: pointer;" (click)="unmuteAudio()">mic_off</div>
+                            <!-- <img src="assets/muteSine.png" (click)="muteAudio()" *ngIf="!audioimage" style="height: 35px;    width: 40px;"/>
+                            <img src="https://icon-library.com/images/mic-mute-icon/mic-mute-icon-19.jpg" *ngIf="audioimage" style="width: 35px;    width: 40px;" (click)="unmuteAudio()" /> -->
+                         </div>
+                         <div class="col-md-4" style="text-align: center;">
+                            <div style="cursor: pointer;" (click)="endCall()" style="font-size: 40px; cursor: pointer; color: #ff0000;"> call</div>
+                            <!-- <a><img src="assets/callEnd.png"  (click)="endCall()" style="cursor:pointer;height: 35px;    width: 40px;"/></a> -->
+                         </div>
+                         <div class="col-md-4" style="text-align: center;">
+                            <div (click)="muteVideo()" *ngIf="!videoimage" style="font-size: 40px;color:#fff; cursor: pointer;">video_call</div>
+                             <div *ngIf="videoimage" (click)="unmuteVideo()" style="font-size: 40px; cursor: pointer;">videocam_off</div>
+                            <!-- <img src="assets/videoCall.png" (click)="muteVideo()" *ngIf="!videoimage" style="height: 35px;    width: 40px;"/>
+                            <img src="https://icon-library.com/images/mic-mute-icon/mic-mute-icon-19.jpg" *ngIf="videoimage" (click)="unmuteVideo()" style="width: 35px;    width: 40px;" /> -->
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>

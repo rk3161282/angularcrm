@@ -1,0 +1,42 @@
+
+<div class="app-content content ">
+    <!-- <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div> -->
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- users edit start -->
+            <section class="app-user-edit">
+                <div class="card">
+                    <div class="card-body">
+                   
+                    <form novalidate="novalidate" [formGroup]="authForm" (ngSubmit)="createProject()">
+                       
+                        <div class="modal-header mb-1">
+                            <h5 class="modal-title" id="exampleModalLabel">Name</h5>
+                        </div>
+                        <div class="modal-body flex-grow-1">
+                            <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.name.errors }">
+                                <label class="form-label" for="basic-icon-default-fullname">Name </label>
+                                <span *ngIf="isSubmitted && formControls.name.errors" class="help-block">
+                                    <span *ngIf="formControls.name.errors.required"> Name  is required</span>
+                                    </span>
+                                <input type="text" class="form-control dt-full-name" id="basic-icon-default-fullname" placeholder="Name " formControlName="name" name="name" aria-label="Break Type " aria-describedby="basic-icon-default-fullname2">
+                            </div>
+                            
+                           
+                            <button type="submit" class="btn btn-primary mr-1 data-submit waves-effect waves-float waves-light">Submit</button>
+                            <button type="reset" class="btn btn-outline-secondary waves-effect" >Cancel</button>
+                        </div>
+                    </form>
+                           
+
+                    </div>
+                </div>
+            </section>
+            <!-- users edit ends -->
+
+        </div>
+    </div>
+</div>

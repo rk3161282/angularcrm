@@ -1,0 +1,8 @@
+
+          <app-header *ngIf="currentRoute != '/' && currentRoute != '/forgot-password' && currentRoute != '/dial-pad' && currentRoute != '/virtualUrl/project'"></app-header>
+          <app-sidebar *ngIf="currentRoute != '/' && currentRoute != '/forgot-password' && currentRoute != '/dial-pad' && currentRoute != '/virtualUrl/project'"></app-sidebar>
+            <router-outlet></router-outlet>
+          <app-footer *ngIf="currentRoute != '/' && currentRoute != '/forgot-password' && currentRoute != '/dial-pad' && currentRoute != '/virtualUrl/project'"></app-footer>
+          
+
+          

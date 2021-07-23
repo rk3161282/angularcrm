@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+.modal-slide-in .modal-dialog .modal-content {
+    padding-bottom: 3.7rem;
+    padding-top: 3.7rem;
+    overflow: auto;
+    border-radius: 0;
+    height: auto !important;
+}

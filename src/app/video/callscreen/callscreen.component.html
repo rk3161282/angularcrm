@@ -1,0 +1,176 @@
+
+
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <!-- <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div> -->
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- users list start -->
+            <section class="app-user-list">
+                <!-- users filter start -->
+                
+                <!-- users filter end -->
+                <!-- list section start -->
+                <div class="card">
+                    <div class="row" style="padding: 10px;">
+                        <div class="col-md-10">
+                           <p style="    font-style: oblique;font-size: 18px;">Share the virtual url with your client</p>
+                        </div>
+                        
+                     </div>
+                     <div class="row" style="padding: 10px;">
+                        <div class="col-md-8">
+                           <div class="input-group">
+                              <input type="text" #userinput [(ngModel)]="virtualUrl" name="virtualUrl" class="form-control" placeholder="https://www.testdemo.com/virtualUrl" aria-label="https://www.testdemo.com/virtualUrl" aria-describedby="basic-addon2">
+                              <div class="input-group-append">
+                                 <button (click)="copyInputMessage(userinput)"  class="btn copybtn" type="button">Copy</button>
+                                 <button class="btn sharebtn" type="button"  (click)="shareEmailPhone()">Share Via</button>
+                             </div>
+                             
+                           </div>
+                        </div>
+                     </div>
+                    <div class="row">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                               <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" style="color: #fff;font-size: 17px;">Call Queue</a>
+                                  </h4>
+                               </div>
+                               <div id="collapse1" class="panel-collapse collapse in">
+                                  <div class="panel-body">
+                                     <div class="row" *ngFor = "let data of call_list.result"  style="    margin-bottom: 20px;">
+                                       
+                                           <div class="row">
+                                              <div class="col-md-1">
+                                                <span>{{data.id}}</span>
+                                              </div>
+                                              <div class="col-md-4">
+                                                 <span>{{data.phone}}</span><br/>
+                                                 <span>Checked in {{data.checked_in|date:"medium"}}</span>
+                                              </div>
+                                              <div class="col-md-3">
+                                                <img src="assets/assets/img/44beb3c457a01f0a4a4f0d9ede6af2f4-removebg-preview.png" style="height:25px;width:25px;cursor:pointer;" (click)="joincall(data)" title="Video Call"/>
+                                              </div>
+                                           </div>
+                                       
+                                     </div>
+                                     <div id="videos_call">
+                                       <div id="subscriber" style="height: 400px;"></div>
+                                       <div id="publisher" style="height: 400px;"></div>
+                                    </div>
+                                  </div>
+                               </div>
+                            </div>
+                          
+                         </div>
+                    </div>
+                   
+                </div>
+               
+                <!-- list section end -->
+            </section>
+            <div class="col-md-7" *ngIf="showvideoscreen">
+               <div class="accordion" id="accordionExample">
+                  <div class="card">
+                     <div class="card-header customDoctorLive" style="padding: 0px;">
+                        <h2 class="mb-0">
+                           {{remoteCalls}}
+                           <button class="btn btn-link" type="button" style="width:100%;color: #fff;">
+                              <p style="margin-bottom: 0px;   text-align: left;"><span>Call With raju</span> <span class="error" style="text-align: right;float: right;">. <span style="color: #fff;">Live</span></span> </p>
+                           </button>
+                        </h2>
+                     </div>
+                     <div class="collapse1 show" >
+                        <div class="card-body customDoctorImage">
+                           <div class="row">
+                              <div class="containertext">
+                                 <div class="box" style="background:#837c7c;">
+                                    <div *ngFor="let callId of remoteCalls" [id]="callId" class="remote">
+                                 </div>
+                              </div>
+                              <div class="box stack-top" style="background: blue;">
+                                 <div [id]="localCallId" class="local"></div>
+                              </div>
+                              <div class="box stack-top1">
+                                 <div class="row">
+                                    <div class="col-md-4" style="text-align: center;">
+                                       <div (click)="muteAudio()" *ngIf="!audioimage" style="font-size: 40px; color:#fff; cursor: pointer;">mic</div>
+                                       <div *ngIf="audioimage" style="font-size: 40px; cursor: pointer;" (click)="unmuteAudio()">mic_off</div>
+                                       <!-- <img src="assets/muteSine.png" (click)="muteAudio()" *ngIf="!audioimage" style="height: 35px;    width: 40px;"/>
+                                       <img src="https://icon-library.com/images/mic-mute-icon/mic-mute-icon-19.jpg" *ngIf="audioimage" style="width: 35px;    width: 40px;" (click)="unmuteAudio()" /> -->
+                                    </div>
+                                    <div class="col-md-4" style="text-align: center;">
+                                       <div style="cursor: pointer;" (click)="endCall()" style="font-size: 40px; cursor: pointer; color: #ff0000;"> call</div>
+                                       <!-- <a><img src="assets/callEnd.png"  (click)="endCall()" style="cursor:pointer;height: 35px;    width: 40px;"/></a> -->
+                                    </div>
+                                    <div class="col-md-4" style="text-align: center;">
+                                       <div (click)="muteVideo()" *ngIf="!videoimage" style="font-size: 40px;color:#fff; cursor: pointer;">video_call</div>
+                                        <div *ngIf="videoimage" (click)="unmuteVideo()" style="font-size: 40px; cursor: pointer;">videocam_off</div>
+                                       <!-- <img src="assets/videoCall.png" (click)="muteVideo()" *ngIf="!videoimage" style="height: 35px;    width: 40px;"/>
+                                       <img src="https://icon-library.com/images/mic-mute-icon/mic-mute-icon-19.jpg" *ngIf="videoimage" (click)="unmuteVideo()" style="width: 35px;    width: 40px;" /> -->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- users list ends -->
+            <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+                <p style="color: white">Please Wait. </p>  
+                </ngx-spinner>   
+        </div>
+    </div>
+</div>
+
+
+<!--Email and phone Number share PopUp-->
+<!-- The Modal -->
+<div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+    <div class="modal-dialog">
+       <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header" style="border-bottom:0px;    padding: 0.5rem 0.5rem;">
+             <button type="button" class="close" data-dismiss="modal" (click) = "hide()">&times;</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+             <h4 style="color:#0e418b">Please Enter The  Email/Phone For share virtual url </h4>
+             <div class="row" style="margin-left: 0px;margin-right: 0px; ">
+                <!-- <div>
+                   <p class="shareEmailPhoneP">
+                      <label for="email"></label>
+                      <mat-radio-group aria-label="Select an option" [(ngModel)]="type" name="type" required>
+                         <mat-radio-button value="2" >Phone &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</mat-radio-button>
+                         <mat-radio-button value="1">Email </mat-radio-button>
+                      </mat-radio-group>
+                   </p>
+                </div> -->
+                <div class="col-md-12 col-sm-12" style="padding-left:5px;padding-right: 5px;">
+                  
+                      <label>Mobile/Email</label>
+                      <input placeholder="Mobile/Email" value="" [(ngModel)]="text" class="form-control" name="text" required>
+                  
+                </div>
+                   <div class="col-md-12 col-sm-12 shareButton" >
+                      <a  style="color: #fff;cursor:pointer;">Share</a>
+                   </div>
+             </div>
+          </div>
+         
+       </div>
+    </div>
+ </div>
+
+ <!--Email and phone Number share PopUp-->
+<!-- END: Content-->
+
+ 
+

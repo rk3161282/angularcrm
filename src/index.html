@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en" class="loading" data-textdirection="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>CRM</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+  <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+  <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+  <meta name="author" content="PIXINVENT">
+  <link rel="apple-touch-icon" href="assets/app-assets/images/ico/apple-icon-120.png">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/app-assets/images/ico/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+  <link rel="stylesheet" href="assets/assets/css/jquery.keypad.css">
+
+  
+  <!-- BEGIN: Vendor CSS-->
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/vendors/css/vendors.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/vendors/css/charts/apexcharts.css">
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/vendors/css/extensions/toastr.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/vendors/css/tables/datatable/datatables.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/vendors/css/tables/datatable/responsive.bootstrap.min.css">
+  <!-- END: Vendor CSS-->
+
+
+  <!-- BEGIN: Theme CSS-->
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/css/bootstrap-extended.css">
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/css/colors.css">
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/css/components.css">
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/css/themes/dark-layout.css">
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/css/themes/bordered-layout.css">
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/css/themes/semi-dark-layout.css">
+  
+  <!-- BEGIN: Page CSS-->
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/css/core/menu/menu-types/vertical-menu.css">
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/css/plugins/forms/form-validation.css">
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/css/pages/page-auth.css">
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/css/plugins/charts/chart-apex.css">
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/css/plugins/extensions/ext-component-toastr.css">
+  <link rel="stylesheet" type="text/css" href="assets/app-assets/css/pages/app-invoice-list.css">
+  <!-- END: Page CSS-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- BEGIN: Custom CSS-->
+  <link rel="stylesheet" type="text/css" href="assets/assets/css/style.css">
+  <!-- END: Custom CSS-->
+
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://www.doubango.org/sipml5/SIPml-api.js?svn=252" type="text/javascript"> </script>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body class="vertical-layout vertical-menu-modern navbar-floating footer-static menu-expanded" data-open="click" data-menu="vertical-menu-modern" data-col="">
+
+
+        <app-root></app-root>
+    
+     <!-- Call button options -->
+     <!-- <ul id="ulCallOptions" class="dropdown-menu" style="visibility:hidden">
+         <li><a href="#" onclick='sipCall("call-audio");'>Audio</a></li>
+         <li><a href="#" onclick='sipCall("call-audiovideo");'>Video</a></li>
+         <li id='liScreenShare'><a href="#" onclick='sipShareScreen();'>Screen Share</a></li>
+         <li class="divider"></li>
+         <li><a href="#" onclick='uiDisableCallOptions();'><b>Disable these options</b></a></li>
+     </ul> -->
+
+     <!-- Audios -->
+    <audio id="audio_remote" autoplay="autoplay"> </audio>
+    <audio id="ringtone" loop src="assets/sounds/ringtone.wav"> </audio>
+    <audio id="ringbacktone" loop src="assets/sounds/ringbacktone.wav"> </audio>
+    <audio id="dtmfTone" src="assets/sounds/dtmf.wav"> </audio>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/fontawesome.min.js"></script>
+         <!-- BEGIN: Vendor JS-->
+         <script src="assets/app-assets/vendors/js/vendors.min.js"></script>
+         <!-- BEGIN Vendor JS-->
+        
+         <!-- BEGIN: Page Vendor JS-->
+         <script src="assets/app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+         <!-- END: Page Vendor JS-->
+        
+         <!-- BEGIN: Theme JS-->
+         <script src="assets/app-assets/js/core/app-menu.js"></script>
+         <script src="assets/app-assets/js/core/app.js"></script>
+         <!-- END: Theme JS-->
+         
+
+         <!-- BEGIN: Page JS-->
+         <script src="assets/app-assets/js/scripts/pages/page-auth-login.js"></script>
+         <!-- END: Page JS-->
+        
+         
+          <!-- BEGIN: Page Vendor JS-->
+          <!-- <script src="assets/app-assets/vendors/js/charts/apexcharts.min.js"></script> -->
+          <script src="assets/app-assets/vendors/js/extensions/toastr.min.js"></script>
+          <script src="assets/app-assets/vendors/js/extensions/moment.min.js"></script>
+          <script src="assets/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+          <script src="assets/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+          <script src="assets/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+          <script src="assets/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+          <script src="assets/app-assets/vendors/js/tables/datatable/responsive.bootstrap.min.js"></script>
+          <!-- END: Page Vendor JS-->
+        
+          <!-- BEGIN: Page JS-->
+          <!-- <script src="assets/app-assets/js/scripts/pages/dashboard-analytics.js"></script> -->
+          <script src="assets/app-assets/js/scripts/pages/app-invoice-list.js"></script>
+          <!-- END: Page JS-->
+          <!-- <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script> -->
+          <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+         <script src="assets/assets/js/jquery.plugin.min.js"></script>
+        <script src="assets/assets/js/jquery.keypad.js"></script>
+        <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
+          <script>
+            $(window).on('load', function() {
+                if (feather) {
+                    feather.replace({
+                        width: 14,
+                        height: 14
+                    });
+                }
+            })
+        </script>  
+        
+        <script>
+            $(window).on('load', function() {
+            // var count = 0;
+
+            //         $(".digit").on('click', function() {
+            //             debugger
+            //         var num = ($(this).clone().children().remove().end().text());
+            //         if (count < 11) {
+            //             debugger
+            //             // $("#output").append('<span>' + num.trim() + '</span>');
+            //             $('#txtPhoneNumber').append(num.trim());
+            //             count++
+            //         }
+            //         });
+
+            //         $('.fa-long-arrow-left').on('click', function() {
+            //         // $('#output span:last-child').remove();
+            //         count--;
+            //         });
+            // States
+// 
+
+                (function ($){
+                window.numberArray = [],
+                window.phoneNumber = '',
+                window.updateDisplay,
+                window.numberDisplayEl,
+                window.inCallModeActive,
+                window.dialpadButton = $('div#dialpad li'),
+                window.dialpadCase = $('div#dialpad'),
+                window.clearButton = $('#actions .clear'),
+                window.callButton = $('#actions .call'),
+                window.actionButtons = $('#actions'),
+                window.skipButton = $('#actions .skip'),
+                window.numberDisplayEl = $('#numberDisplay input');
+                window.numberDisplayEl.val('');
+                function compilePhoneNumber(numberArray){
+                    if (window.numberArray.length > 1){ 
+                    window.phoneNumber = window.numberArray.join('');
+                    } else {
+                    window.phoneNumber = window.numberArray
+                    }
+                    return this.phoneNumber;
+                };
+
+                function updateDisplay(phoneNumber){
+                    window.numberDisplayEl.val(window.phoneNumber);
+                };
+
+                function clearPhoneNumber(){
+                    window.numberDisplayEl.val('');
+                    window.phoneNumber = '';
+                    window.numberArray = [];
+                };
+
+                function callNumber(){
+                    window.numberDisplayEl.val('Calling...');
+                    activateInCallInterface();
+                    // Need timer interval to animate . . .
+                    // Trigger  "Hangup"
+                    // Trigger  "Call timer"
+                };
+
+                function holdNumber(){
+                    window.numberDisplayEl.val('On Hold.');
+                    changeHoldIntoUnhold();
+                };
+
+                function changeHoldIntoUnhold(){
+                    window.skipButton.html('Unhold');
+                    window.skipButton.addClass('ready');
+                };
+
+                function changeUnholdIntoHold(){
+                    window.skipButton.html('Hold');
+                };
+
+                function activateInCallInterface(){
+                    changeClearIntoHangUp();
+                    changeSkipIntoHold();
+                    disableCallButton();
+                    disableDialButton();
+                    removeReadyFromCall();
+                    enableReadOnlyInput();
+                    window.inCallModeActive = true;
+                };
+
+                function disableInCallInterface(){
+                    removeReadOnlyInput();
+                    enableCallButton();
+                    changeHoldIntoSkip();
+                    window.inCallModeActive = false;
+                }
+
+                function disableCallButton(){
+                    window.callButton.addClass('deactive');
+                };
+
+                function enableCallButton(){
+                    window.callButton.removeClass('deactive');
+                };
+
+                function enableDialButton(){
+                    window.dialpadCase.removeClass('deactive');
+                };
+
+                function disableDialButton(){
+                    window.dialpadCase.addClass('deactive');
+                };
+
+                function changeSkipIntoHold(){
+                    window.skipButton.html('Hold');
+                };
+
+                function changeHoldIntoSkip(){
+                    window.skipButton.html('Skip');
+                };
+
+                function changeClearIntoHangUp(){
+                    window.clearButton.html('Hang Up');
+                    window.clearButton.addClass('hangup');
+                };
+
+                function changeHangUpIntoClear(){
+                    if( window.clearButton.html('Hang Up') ){
+                    window.clearButton.html('Clear');
+                    window.clearButton.removeClass('hangup');
+                    }
+                };
+
+                function enableReadOnlyInput(){
+                    window.numberDisplayEl.attr('readonly','readonly');
+                }
+
+                function removeReadOnlyInput(){
+                    window.numberDisplayEl.removeAttr('readonly');
+                }
+
+                function refreshInputArray(){
+                    this.numberDisplayElContent = window.numberDisplayEl.val(); 
+                    window.numberArray = this.numberDisplayElContent.split('');
+                };
+
+                window.dialpadButton.click(function(){
+                    debugger
+                    if( !$(dialpadCase).hasClass('deactive') ){
+                    var content = $(this).html();
+                    refreshInputArray();
+                    window.numberArray.push(content);
+                    compilePhoneNumber();
+                    updateDisplay();
+                    checkDisplayEl();
+                    saveNumberDisplayEl();
+                    }
+                });
+
+                window.skipButton.click(function(){
+                    if (window.inCallModeActive == true){
+                    holdNumber();
+                    }
+                });
+
+                function checkDisplayEl(){
+                    if( window.numberDisplayEl.val() != "" ){
+                    addReadyToClear();
+                    addReadyToCall();
+                    enableActionButtons();
+                    } else if ( window.numberDisplayEl.val() == "" ) {
+                    removeReadyFromClear();
+                    removeReadyFromCall();
+                    disableActionButtons();
+                    }
+                }
+
+                function disableActionButtons(){
+                    window.actionButtons.addClass('deactive');
+                }
+
+                function enableActionButtons(){
+                    window.actionButtons.removeClass('deactive');
+                }
+
+                function addReadyToCall(){
+                    window.callButton.addClass('ready');
+                }
+
+                function removeReadyFromCall(){
+                    window.callButton.removeClass('ready');
+                }
+
+                function addReadyToClear(){
+                    window.clearButton.addClass('ready');
+                }
+
+                function removeReadyFromClear(){
+                    window.clearButton.removeClass('ready');
+                }
+
+                function saveNumberDisplayEl(){
+                    lastNumberDisplayEl = window.numberDisplayEl.val()
+                }
+
+                function displayLastSavedNumberDisplayEl(){
+                    console.log('Last displayed element value: ' + lastNumberDisplayEl);
+                }
+
+                $('div#actions li.clear').click(function(){
+                    enableCallButton();
+                    enableDialButton();
+                    clearPhoneNumber();
+                    removeReadOnlyInput();
+                    changeHangUpIntoClear();
+                    updateDisplay();
+                    checkDisplayEl();
+                    disableInCallInterface();
+                });
+
+                $('div#actions li.call').click(function(){
+                    callNumber();
+                });
+
+                })(jQuery);
+            })
+
+         
+        </script>
+        <script>
+            // $(function () {
+            // var qwertyLayout = [ 
+            //     $.keypad.qwertyAlphabetic[0] + $.keypad.CLOSE, 
+            //     $.keypad.HALF_SPACE + $.keypad.qwertyAlphabetic[1] + 
+            //     $.keypad.HALF_SPACE + $.keypad.CLEAR, 
+            //     $.keypad.SPACE + $.keypad.qwertyAlphabetic[2] + 
+            //     $.keypad.SHIFT + $.keypad.BACK]; 
+            //     debugger
+            //     $('#txtPhoneNumber').keypad({keypadOnly: false,layout: $.keypad.qwertyLayout});
+            //     $('#inlineKeypad').keypad({onClose: function() {
+            //         alert($(this).val());
+            //     }});
+            // });
+            </script>
+            <script>
+                $(function () {
+                    $('#contacts').on('change', function() {
+                        debugger
+                        $('#txtPhoneNumber').val(this.value);
+                    });
+                });
+            </script>
+            <script>
+                // var count = 0;
+
+                // $(".digit").on('click', function() {
+                //     debugger
+                // var num = ($(this).clone().children().remove().end().text());
+                // if (count < 11) {
+                //     $("#output").append('<span>' + num.trim() + '</span>');
+
+                //     count++
+                // }
+                // });
+
+                // $('.fa-long-arrow-left').on('click', function() {
+                // $('#output span:last-child').remove();
+                // count--;
+                // });
+            </script>
+   
+</body>
+
+
+</html>

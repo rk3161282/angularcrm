@@ -1,0 +1,79 @@
+<body class="vertical-layout vertical-menu-modern blank-page navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="blank-page">
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <div class="auth-wrapper auth-v2">
+                    <div class="auth-inner row m-0">
+                        <!-- Brand logo--><a class="brand-logo" href="javascript:void(0);">
+                           <img src="assets/assets/img/rnd_logo.png" class="img-fluid" style="width:150px;"/>
+                            <!-- <h2 class="brand-text text-primary ml-1">Vuexy</h2>  -->
+                        </a>
+                        <!-- /Brand logo-->
+                        <!-- Left Text-->
+                        <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
+                            <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img class="img-fluid" src="https://getvoip.com/uploads/call-center-queue.jpg" alt="Login V2" /></div>
+                        </div>
+                        <!-- /Left Text-->
+                        <!-- Login-->
+                        <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
+                            <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
+                                <h2 class="card-title font-weight-bold mb-1">Welcome to Rndsoft!</h2>
+                                <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
+                                <form class="mt-2"  [formGroup]="authForm"  (ngSubmit)="signIn()">
+                                    <div class="form-group" >
+                                        <label class="form-label" for="login-email">Email</label>
+                                        <p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+                                        <input class="form-control" id="login-email" type="text" formControlName="email" name="user_name" placeholder="john@example.com"  autofocus="" tabindex="1" />
+                                        </p>
+                                    </div>
+                                    <div *ngIf="isSubmitted && formControls.email.errors" class="help-block" style="color: RED;">
+                                        <div *ngIf="formControls.email.errors.required">Email is required</div>
+                                      </div>
+                                  
+                                    <div class="form-group">
+                                        <div class="d-flex justify-content-between">
+                                            <label for="login-password">Password</label><a [routerLink]="['/forgot-password']"><small>Forgot Password?</small></a>
+                                        </div> 
+                                        <!-- <div class="input-group"> -->
+                                            <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+                                            <input class="form-control form-control-merge" id="login-password" type="password" formControlName="password" name="password" placeholder="············"  tabindex="2" />
+                                         
+                                            <!-- <div class="input-group-append"><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span></div> -->
+                                         </p>
+                                        <!-- </div> -->
+                                   
+                                    </div>
+                                    <div *ngIf="isSubmitted && formControls.password.errors" class="help-block" style="color: RED;">
+                                        <div *ngIf="formControls.password.errors.required">Password is required</div>
+                                      </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input" id="remember-me" type="checkbox" tabindex="3" />
+                                            <label class="custom-control-label" for="remember-me"> Remember Me</label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block" tabindex="4">Sign in</button>
+                                </form>
+                                <!-- <p class="text-center mt-2"><span>New on our platform?</span><a href="page-auth-register-v2.html"><span>&nbsp;Create an account</span></a></p> -->
+                                <!-- <div class="divider my-2">
+                                    <div class="divider-text">or</div>
+                                </div> -->
+                                <!-- <div class="auth-footer-btn d-flex justify-content-center"><a class="btn btn-facebook" href="javascript:void(0)"><i data-feather="facebook"></i></a><a class="btn btn-twitter white" href="javascript:void(0)"><i data-feather="twitter"></i></a><a class="btn btn-google" href="javascript:void(0)"><i data-feather="mail"></i></a><a class="btn btn-github" href="javascript:void(0)"><i data-feather="github"></i></a></div> -->
+                            </div>
+                        </div>
+                        <!-- /Login-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+        <p style="color: white">Please Wait. </p>  
+        </ngx-spinner>   
+    <!-- END: Content-->
+</body>
